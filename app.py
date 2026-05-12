@@ -10,7 +10,7 @@ from utils.system_info import get_process_list, get_resource_usage, get_system_o
 
 
 APP_DIR = Path(__file__).parent
-LOGO_PATH = APP_DIR / "assets" / "toolkitsvg.png"
+LOGO_PATH = APP_DIR / "assets" / "logo.png"
 GITHUB_URL = "https://github.com/mrachcore/networktoolkit"
 
 
@@ -239,7 +239,7 @@ def sidebar_navigation():
         logo_col, title_col = st.columns([1, 4], vertical_alignment="center")
         with logo_col:
             if LOGO_PATH.exists():
-                st.image(str(LOGO_PATH), width=44)
+                st.image(str(LOGO_PATH), width=72)
         with title_col:
             st.markdown(
                 """
@@ -257,11 +257,16 @@ def sidebar_navigation():
 
 
 def dashboard_page():
-    page_header(
-        "Network Toolkit",
-        "by mrachcore",
-        "A local IT/network troubleshooting toolkit built with Python and Streamlit.",
-    )
+    logo_col, header_col = st.columns([1, 6], vertical_alignment="center")
+    with logo_col:
+        if LOGO_PATH.exists():
+            st.image(str(LOGO_PATH), width=120)
+    with header_col:
+        page_header(
+            "Network Toolkit",
+            "by mrachcore",
+            "A local IT/network troubleshooting toolkit built with Python and Streamlit.",
+        )
 
     st.markdown(
         """
